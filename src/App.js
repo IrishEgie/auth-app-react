@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React, { useState } from 'react';
+import { SplitScreen } from './components/layout/SplitScreen';
+import { AuthSide } from './components/layout/AuthSide';
+import { Login } from './components/auth/Login';
+import { Signup } from './components/auth/Signup';
 
 function App() {
+  const [isLogin, setIsLogin] = useState(true);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <SplitScreen
+      leftContent={<AuthSide isLogin={isLogin} />}
+      rightContent={
+        isLogin ? (
+          <Login switchToSignup={() => setIsLogin(false)} />
+        ) : (
+          <Signup switchToLogin={() => setIsLogin(true)} />
+        )
+      }
+    />
   );
 }
 
