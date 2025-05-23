@@ -7,7 +7,8 @@ import { Signup } from './components/auth/Signup';
 import { Main } from './pages/Main';
 import { About } from './pages/About';
 import { Contacts } from './pages/Contacts';
-import { Price } from './pages/Price';
+import Price from './pages/Price';
+
 
 import { SplitScreen } from './components/layout/SplitScreen';
 import { AuthSide } from './components/layout/AuthSide';

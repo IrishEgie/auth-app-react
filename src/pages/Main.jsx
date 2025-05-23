@@ -1,104 +1,49 @@
-// src/pages/Main.jsx
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import Button from '../components/ui/Button';
+import Header from "../components/layout/Header";
+import Hero from "../components/layout/Hero";
+import Footer from "../components/layout/Footer";
+import FeatureCards from "../components/layout/FeatureCards";
 
 export const Main = ({ onLogout }) => {
-  const navigate = useNavigate();
-
   return (
-    <div className="d-flex vh-100">
-      {/* Slim Sidebar that expands on hover */}
-      <div className="d-flex flex-column flex-shrink-0 p-3 bg-primary text-white" 
-           style={{width: "60px", transition: "width 0.3s"}}
-           onMouseEnter={(e) => e.currentTarget.style.width = "250px"}
-           onMouseLeave={(e) => e.currentTarget.style.width = "60px"}>
-        
-        {/* Brand/Logo - hidden when collapsed, shown when expanded */}
-        <div className="d-flex align-items-center mb-3 mb-md-0 text-white text-decoration-none overflow-hidden">
-          <span className="fs-4 d-none d-md-inline ms-2">AuthApp</span>
-        </div>
-        
-        <hr className="my-2" />
-        
-        {/* Navigation Links */}
-        <ul className="nav nav-pills flex-column mb-auto">
-          <li className="nav-item">
-            <button 
-              className="nav-link text-white d-flex align-items-center px-1 py-2" 
-              onClick={() => navigate('/')}
-            >
-              <i className="bi bi-house-door-fill me-3" style={{fontSize: "1.2rem"}}></i>
-              <span className="d-none d-md-inline">Home</span>
-            </button>
-          </li>
-          <li>
-            <button 
-              className="nav-link text-white d-flex align-items-center px-1 py-2" 
-              onClick={() => navigate('/about')}
-            >
-              <i className="bi bi-info-circle-fill me-3" style={{fontSize: "1.2rem"}}></i>
-              <span className="d-none d-md-inline">About</span>
-            </button>
-          </li>
-          <li>
-            <button 
-              className="nav-link text-white d-flex align-items-center px-1 py-2" 
-              onClick={() => navigate('/contacts')}
-            >
-              <i className="bi bi-person-lines-fill me-3" style={{fontSize: "1.2rem"}}></i>
-              <span className="d-none d-md-inline">Contacts</span>
-            </button>
-          </li>
-          <li>
-            <button 
-              className="nav-link text-white d-flex align-items-center px-1 py-2" 
-              onClick={() => navigate('/price')}
-            >
-              <i className="bi bi-currency-dollar me-3" style={{fontSize: "1.2rem"}}></i>
-              <span className="d-none d-md-inline">Pricing</span>
-            </button>
-          </li>
-        </ul>
-        <hr className="my-2" />
-        
-        {/* Logout Button */}
-        <div className="d-flex align-items-center">
-          <Button 
-            variant="outline-light" 
-            className="d-flex align-items-center px-1 py-2 w-100" 
-            onClick={onLogout}
-          >
-            <i className="bi bi-box-arrow-right me-3" style={{fontSize: "1.2rem"}}></i>
-            <span className="d-none d-md-inline">Logout</span>
-          </Button>
-        </div>
-      </div>
-
+    <div className="d-flex flex-column min-vh-100">
+      {/* Header Navigation Bar */}
+      <Header onLogout={onLogout} /> {/* 👈 use it here */}
       {/* Main Content Area */}
-      <div className="flex-grow-1 p-4 overflow-auto">
-        <h1 className="mb-4">Welcome to Your Dashboard</h1>
-        <p className="lead">
-          You've successfully logged in to your account. Explore the features using the navigation on the left.
-        </p>
-        
-        <div className="card mt-5">
-          <div className="card-body">
-            <h5 className="card-title">Quick Actions</h5>
-            <div className="d-flex justify-content-center gap-3 mt-3">
-              <Button variant="primary" onClick={() => alert('Feature coming soon!')}>
-                View Profile
-              </Button>
-              <Button variant="success" onClick={() => alert('Feature coming soon!')}>
-                Settings
-              </Button>
-              <Button variant="info" onClick={() => alert('Feature coming soon!')}>
-                Notifications
-              </Button>
-            </div>
-          </div>
+      <div
+        className="d-flex align-items-center justify-content-center text-white flex-grow-1"
+        style={{
+          minHeight: "90vh",
+          padding: "2rem",
+          backgroundImage: `url('https://images.unsplash.com/photo-1614963326505-843868e1d83a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3Dhttps://images.unsplash.com/photo-1614963326505-843868e1d83a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          textShadow: "0 0 8px rgba(0,0,0,0.7)",
+        }}
+      >
+        <div className="container text-center">
+          <h1 className="display-4 fw-bold">Welcome to Your Dashboard</h1>
+          <p className="lead">
+            You've successfully logged in to your account. Explore the features
+            using the navigation above.
+          </p>
         </div>
       </div>
+      <div className="w-100 my-5 py-3 bg-light"></div>
+      <Hero
+        title="Quick Actions"
+        subtitle="Access your profile, adjust settings, or view notifications in one click."
+        buttonText="View Profile"
+        onButtonClick={() => alert("Feature coming soon!")}
+        imageSrc="/illustration.jpg" // or whatever image is in your public folder
+      />
+      <div className="w-100 my-5 py-3 bg-light"></div>
+      <FeatureCards
+        img1="https://images.unsplash.com/photo-1746022791473-aac2a0500d80?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxMXx8fGVufDB8fHx8fA%3D%3D"
+        img2="https://plus.unsplash.com/premium_photo-1679079456083-9f288e224e96?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dmlkZW8lMjBlZGl0aW5nfGVufDB8fDB8fHww"
+        img3="https://images.unsplash.com/photo-1618329027137-a520b57c6606?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHZpZGVvJTIwZWRpdGluZ3xlbnwwfHwwfHx8MA%3D%3D"
+      />
+      <Footer />
     </div>
   );
 };
