@@ -5,6 +5,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// Add this near the top of your index.js
+import { authTests } from './utils/authTest';
+if (process.env.NODE_ENV === 'development') {
+  window.authTests = authTests;
+}
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
