@@ -1,31 +1,45 @@
-import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 
-const FeatureCards = ({ img1, img2, img3 }) => {
+const FeatureCards = ({
+  FCtitle = "Custom Cards",
+  img1,
+  img2,
+  img3,
+  title1 = "Short title, long jacket",
+  title2 = "Much longer title that wraps to multiple lines",
+  title3 = "Another longer title belongs here",
+  location1 = "Earth",
+  location2 = "Pakistan",
+  location3 = "California",
+  duration1 = "3d",
+  duration2 = "4d",
+  duration3 = "5d",
+}) => {
+
   const cardsData = [
     {
-      title: "Short title, long jacket",
+      title: title1,
       backgroundImage: `url('${img1}')`,
-      location: "Earth",
-      duration: "3d",
+      location: location1,
+      duration: duration1,
     },
     {
-      title: "Much longer title that wraps to multiple lines",
+      title: title2,
       backgroundImage: `url('${img2}')`,
-      location: "Pakistan",
-      duration: "4d",
+      location: location2,
+      duration: duration2,
     },
     {
-      title: "Another longer title belongs here",
+      title: title3,
       backgroundImage: `url('${img3}')`,
-      location: "California",
-      duration: "5d",
+      location: location3,
+      duration: duration3,
     },
   ];
 
   return (
     <Container className="px-4 py-5" id="custom-cards">
-      <h2 className="pb-2 border-bottom">Custom cards</h2>
+      <h2 className="pb-2 border-bottom">{FCtitle || "Section Title"}</h2>
       <Row xs={1} lg={3} className="g-4 py-5">
         {cardsData.map((card, index) => (
           <Col key={index}>
@@ -44,10 +58,10 @@ const FeatureCards = ({ img1, img2, img3 }) => {
                 <ul className="d-flex list-unstyled mt-auto">
                   <li className="me-auto">
                     <img
-                      src="https://github.com/twbs.png"
+                      src="/logo.png"
                       alt="Bootstrap"
-                      width="32"
-                      height="32"
+                      width="48"
+                      height="48"
                       className="rounded-circle border border-white"
                     />
                   </li>
@@ -65,6 +79,7 @@ const FeatureCards = ({ img1, img2, img3 }) => {
           </Col>
         ))}
       </Row>
+      <hr className="featurette-divider" />
     </Container>
   );
 };

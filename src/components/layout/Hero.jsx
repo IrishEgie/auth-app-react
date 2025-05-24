@@ -16,7 +16,7 @@ const Hero = ({ title, subtitle, imageSrc, buttonText = "Get Started", route = "
         <Col xs={10} sm={8} lg={6}>
           <img
             src={imageSrc || "/illustration.jpg"}
-            className="d-block mx-lg-auto img-fluid rounded"
+            className="d-block mx-lg-auto img-fluid rounded-4"
             alt="Hero Illustration"
             width="700"
             height="500"
