@@ -1,47 +1,48 @@
+// src/pages/Price.jsx
 import React from "react";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 
 const pricingData = {
-  title: "Customize this title",
-  subtitle: "Replace this subtitle with a brief description of your pricing offer.",
+  title: "Simple, Transparent Pricing",
+  subtitle: "Choose the plan that fits your needs. No hidden fees, cancel anytime.",
   plans: [
     {
-      name: "Plan Name (e.g., Free)",
+      name: "Starter",
       price: "$0",
-      description: "Short description of what this plan offers.",
-      features: ["Feature one", "Feature two", "Feature three", "Feature four"],
+      description: "Great for individuals getting started with budgeting.",
+      features: ["Track income & expenses", "Monthly reports", "Basic support", "Access on all devices"],
       buttonClass: "btn-outline-primary",
-      buttonText: "Customize button text",
+      buttonText: "Get Started",
       highlight: false,
     },
     {
-      name: "Plan Name (e.g., Pro)",
-      price: "$XX",
-      description: "Brief explanation of this plan’s value.",
-      features: ["Feature A", "Feature B", "Feature C", "Feature D"],
+      name: "Pro",
+      price: "$9",
+      description: "Perfect for families and small teams.",
+      features: ["Everything in Starter", "Collaborative budgeting", "Advanced analytics", "Priority support"],
       buttonClass: "btn-primary",
-      buttonText: "Customize button text",
+      buttonText: "Try Pro",
       highlight: false,
     },
     {
-      name: "Plan Name (e.g., Enterprise)",
-      price: "$YY",
-      description: "Ideal for enterprise customers. Replace with real benefit.",
-      features: ["Feature I", "Feature II", "Feature III", "Feature IV"],
+      name: "Enterprise",
+      price: "$29",
+      description: "Built for organizations with advanced needs.",
+      features: ["All Pro features", "Custom integrations", "Team management", "Dedicated success manager"],
       buttonClass: "btn-primary",
-      buttonText: "Customize button text",
+      buttonText: "Contact Sales",
       highlight: true,
     },
   ],
-  compareTitle: "Compare plans (customize this)",
+  compareTitle: "Compare Our Plans",
   tableFeatures: [
-    { name: "Feature 1 (rename this)", included: [true, true, true] },
-    { name: "Feature 2", included: [false, true, true] },
-    { name: "Feature 3", included: [true, true, true] },
-    { name: "Feature 4", included: [false, true, true] },
-    { name: "Feature 5", included: [false, true, true] },
-    { name: "Feature 6", included: [false, false, true] },
+    { name: "Track expenses", included: [true, true, true] },
+    { name: "Generate reports", included: [true, true, true] },
+    { name: "Multi-user access", included: [false, true, true] },
+    { name: "Advanced analytics", included: [false, true, true] },
+    { name: "Custom integrations", included: [false, false, true] },
+    { name: "Dedicated manager", included: [false, false, true] },
   ],
 };
 
@@ -50,35 +51,35 @@ const Pricing = () => {
     <div className="d-flex flex-column min-vh-100">
       <Header />
 
-      <div className="container py-3 flex-grow-1">
+      <div className="container py-5 flex-grow-1">
         <header>
-          <div className="pricing-header p-3 pb-md-4 mx-auto text-center">
-            <h1 className="display-4 fw-normal text-body-emphasis">{pricingData.title}</h1>
-            <p className="fs-5 text-body-secondary">{pricingData.subtitle}</p>
+          <div className="text-center mb-5">
+            <h1 className="display-4 fw-bold">{pricingData.title}</h1>
+            <p className="fs-5 text-muted">{pricingData.subtitle}</p>
           </div>
         </header>
 
         <main>
-          <div className="row row-cols-1 row-cols-md-3 mb-3 text-center">
+          <div className="row row-cols-1 row-cols-md-3 g-4 mb-5">
             {pricingData.plans.map((plan, i) => (
               <div className="col" key={i}>
-                <div className={`card mb-4 rounded-3 shadow-sm ${plan.highlight ? "border-primary" : ""}`}>
+                <div className={`card h-100 shadow-sm ${plan.highlight ? "border-primary" : ""}`}>
                   <div
-                    className={`card-header py-3 ${
-                      plan.highlight ? "text-bg-primary border-primary" : ""
+                    className={`card-header text-center fw-bold fs-5 ${
+                      plan.highlight ? "bg-primary text-white" : "bg-light"
                     }`}
                   >
-                    <h4 className="my-0 fw-normal">{plan.name}</h4>
+                    {plan.name}
                   </div>
-                  <div className="card-body">
-                    <h1 className="card-title pricing-card-title">
+                  <div className="card-body text-center">
+                    <h2 className="card-title pricing-card-title">
                       {plan.price}
-                      <small className="text-body-secondary fw-light">/mo</small>
-                    </h1>
+                      <small className="text-muted">/mo</small>
+                    </h2>
                     <p className="text-muted">{plan.description}</p>
-                    <ul className="list-unstyled mt-3 mb-4">
+                    <ul className="list-unstyled mt-3 mb-4 text-start">
                       {plan.features.map((f, j) => (
-                        <li key={j}>{f}</li>
+                        <li key={j}>✓ {f}</li>
                       ))}
                     </ul>
                     <button type="button" className={`w-100 btn btn-lg ${plan.buttonClass}`}>
@@ -90,38 +91,28 @@ const Pricing = () => {
             ))}
           </div>
 
-          <h2 className="display-6 text-center mb-4">{pricingData.compareTitle}</h2>
+          <h2 className="text-center mb-4">{pricingData.compareTitle}</h2>
 
           <div className="table-responsive">
-            <table className="table text-center">
-              <thead>
+            <table className="table text-center table-bordered">
+              <thead className="table-light">
                 <tr>
                   <th style={{ width: "34%" }}></th>
                   {pricingData.plans.map((plan, i) => (
-                    <th key={i} style={{ width: "22%" }}>
-                      {plan.name}
-                    </th>
+                    <th key={i}>{plan.name}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {pricingData.tableFeatures.map((feature, i) => (
                   <tr key={i}>
-                    <th scope="row" className="text-start">
-                      {feature.name}
-                    </th>
+                    <th className="text-start">{feature.name}</th>
                     {feature.included.map((included, j) => (
                       <td key={j}>
-                        {included && (
-                          <svg
-                            className="bi"
-                            width="24"
-                            height="24"
-                            role="img"
-                            aria-label="Included"
-                          >
-                            <use xlinkHref="#check" />
-                          </svg>
+                        {included ? (
+                          <span className="text-success">✓</span>
+                        ) : (
+                          <span className="text-muted">–</span>
                         )}
                       </td>
                     ))}

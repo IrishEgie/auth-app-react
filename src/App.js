@@ -7,6 +7,7 @@ import { Signup } from './components/auth/Signup';
 import { Main } from './pages/Main';
 import { About } from './pages/About';
 import { Contacts } from './pages/Contacts';
+import Dashboard from './pages/Dashboard';
 import Price from './pages/Price';
 
 
@@ -49,6 +50,7 @@ function App() {
             <Route path="/" element={<Main onLogout={handleLogout} />} />
             <Route path="/about" element={<About />} />
             <Route path="/contacts" element={<Contacts />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/price" element={<Price />} />
             <Route path="*" element={<Navigate to="/" />} />
           </>

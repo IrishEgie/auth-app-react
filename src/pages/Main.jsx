@@ -54,7 +54,7 @@ export const Main = ({ onLogout }) => {
       {/* Showcase Cards */}
       <div className="w-100 my-5 py-3 bg-light"></div>
       <FeatureCards
-        FCtitle="Work"
+        FCtitle="Our Work"
         img1="https://images.unsplash.com/photo-1746022791473-aac2a0500d80?w=500&auto=format&fit=crop&q=60"
         img2="https://plus.unsplash.com/premium_photo-1679079456083-9f288e224e96?w=500&auto=format&fit=crop&q=60"
         img3="https://images.unsplash.com/photo-1618329027137-a520b57c6606?w=500&auto=format&fit=crop&q=60"
