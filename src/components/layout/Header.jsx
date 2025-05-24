@@ -5,14 +5,22 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
-import { useAuth } from "../../hooks/useAuth";
+import { getCurrentUser } from "../../services/authService";
 
-const Header = ({ onLogout }) => {
-  const { currentUser } = useAuth();
+const Header = ({ onLogout, isAuthenticated }) => {
   const navigate = useNavigate();
+  const currentUser = getCurrentUser(); // Get current user info for display
 
   const handleAuthRedirect = () => {
     navigate("/login");
+  };
+
+  const handleLogout = () => {
+    if (onLogout) {
+      onLogout();
+    }
+    // Navigate to home after logout
+    navigate("/");
   };
 
   return (
@@ -49,21 +57,28 @@ const Header = ({ onLogout }) => {
               Pricing
             </Nav.Link>
             {/* Conditionally render Dashboard link */}
-            {currentUser && (
+            {isAuthenticated && (
               <Nav.Link as={Link} to="/dashboard">
                 Dashboard
               </Nav.Link>
             )}
           </Nav>
           <Nav>
-            {currentUser ? (
-              <button
-                className="nav-link d-flex align-items-center gap-2 w-100 bg-transparent border-0"
-                onClick={onLogout}
-              >
-                <i className="bi bi-box-arrow-right"></i>
-                Sign Out
-              </button>
+            {isAuthenticated ? (
+              <div className="d-flex align-items-center gap-3">
+                {currentUser && (
+                  <span className="text-muted">
+                    Welcome, {currentUser.username || currentUser.email}
+                  </span>
+                )}
+                <button
+                  className="btn btn-outline-secondary d-flex align-items-center gap-2"
+                  onClick={handleLogout}
+                >
+                  <i className="bi bi-box-arrow-right"></i>
+                  Sign Out
+                </button>
+              </div>
             ) : (
               <Button
                 variant="primary"

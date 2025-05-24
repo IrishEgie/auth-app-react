@@ -2,10 +2,10 @@ import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import Featurette from "../components/layout/Featurette";
 
-export const About = ({ onLogout }) => {
+export const About = ({ onLogout, isAuthenticated }) => {
   return (
     <div className="d-flex flex-column min-vh-100">
-      <Header onLogout={onLogout} />
+      <Header onLogout={onLogout} isAuthenticated={isAuthenticated} />
       {/* Mission Section */}
       <div className="w-100 py-5 bg-light text-center">
         <div className="container">
@@ -16,7 +16,7 @@ export const About = ({ onLogout }) => {
             editing tools. What started as a simple timeline prototype quickly
             grew into a sleek, intuitive platform built with students and
             educators in mind. With a clean interface, smart editing workflows,
-            and just the right features, RBG Editor shows what’s possible when
+            and just the right features, RBG Editor shows what's possible when
             thoughtful design meets practical needs — and what can be achieved
             using React, Bootstrap, and a little creative drive.
           </p>

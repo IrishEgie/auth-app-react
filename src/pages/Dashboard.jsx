@@ -2,7 +2,7 @@ import React from 'react';
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 
-const Dashboard = ({ onLogout }) => {
+const Dashboard = ({ onLogout, isAuthenticated }) => {
   // Simplified navigation items
   const navItems = [
     { icon: 'house-fill', text: 'Dashboard' },
@@ -20,7 +20,7 @@ const Dashboard = ({ onLogout }) => {
 
   return (
     <div className="d-flex flex-column vh-100">
-      <Header onLogout={onLogout} />
+      <Header onLogout={onLogout} isAuthenticated={isAuthenticated} />
       
       <div className="container-fluid flex-grow-1 overflow-hidden">
         <div className="row h-100">

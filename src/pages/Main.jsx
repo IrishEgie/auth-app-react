@@ -3,11 +3,11 @@ import Hero from "../components/layout/Hero";
 import Footer from "../components/layout/Footer";
 import FeatureCards from "../components/layout/FeatureCards";
 
-export const Main = ({ onLogout }) => {
+export const Main = ({ onLogout, isAuthenticated }) => {
   return (
     <div className="d-flex flex-column min-vh-100">
-      <Header onLogout={onLogout} />
-
+      <Header onLogout={onLogout} isAuthenticated={isAuthenticated} />
+      
       {/* Hero-like About Section */}
       <div
         className="d-flex align-items-center justify-content-center text-white flex-grow-1"
@@ -23,13 +23,13 @@ export const Main = ({ onLogout }) => {
       >
         <div className="container text-center">
           <img src="/logo.png" alt="Logo" className="rounded-circle w-25" />
-          <h1 className="display-4 fw-bold">Welcom to RBG Editor</h1>
+          <h1 className="display-4 fw-bold">Welcome to RBG Editor</h1>
           <p className="lead">
             RBG Editor is a hub for, intuitive video editing platform built with creators in mind. Whether you're trimming lectures or building content for the web, we make it seamless and fast.
           </p>
         </div>
       </div>
-
+      
       {/* Mission Section */}
       <div className="w-100 py-5 bg-light text-center">
         <div className="container">
@@ -37,11 +37,11 @@ export const Main = ({ onLogout }) => {
           <p className="lead px-md-5">
             RBG Editor started as a weekend hackathon project between a group of university friends frustrated by clunky editing tools.
             What began as a simple timeline editor quickly evolved into a fully-featured platform with a clean interface, smart workflows, and just the right amount of power.
-            Today, ClipForge stands as a sample project showing what’s possible with React, Bootstrap, and a little imagination.
+            Today, ClipForge stands as a sample project showing what's possible with React, Bootstrap, and a little imagination.
           </p>
         </div>
       </div>
-
+      
       {/* Features Preview */}
       <Hero
         title="Smart Tools for Better Editing"
@@ -50,7 +50,7 @@ export const Main = ({ onLogout }) => {
         onButtonClick={() => alert("Demo feature not implemented in this sample.")}
         imageSrc="/illustration.jpg"
       />
-
+      
       {/* Showcase Cards */}
       <div className="w-100 my-5 py-3 bg-light"></div>
       <FeatureCards

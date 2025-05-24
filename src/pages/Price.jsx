@@ -46,10 +46,10 @@ const pricingData = {
   ],
 };
 
-const Pricing = () => {
+const Pricing = ({ onLogout, isAuthenticated }) => {
   return (
     <div className="d-flex flex-column min-vh-100">
-      <Header />
+      <Header onLogout={onLogout} isAuthenticated={isAuthenticated} />
 
       <div className="container py-5 flex-grow-1">
         <header>

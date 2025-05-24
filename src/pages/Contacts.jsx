@@ -3,12 +3,12 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 
-export const Contacts = ({ onLogout }) => {
+export const Contacts = ({ onLogout, isAuthenticated }) => {
   return (
     <div className="d-flex flex-column" style={{ height: "100vh", overflow: "hidden" }}>
       {/* Static Header */}
       <div className="flex-shrink-0">
-        <Header onLogout={onLogout} />
+        <Header onLogout={onLogout} isAuthenticated={isAuthenticated} />
       </div>
 
       {/* Main Content - No Scroll, Full Height */}
@@ -35,7 +35,7 @@ export const Contacts = ({ onLogout }) => {
               <div className="p-5 w-100" style={{ maxWidth: "500px" }}>
                 <h2 className="mb-4 text-center">Get in Touch</h2>
                 <p className="text-muted text-center mb-4">
-                  Reach out to RBG Editor's team — whether it’s a question, idea, or support request.
+                  Reach out to RBG Editor's team — whether it's a question, idea, or support request.
                 </p>
                 <Form>
                   <Form.Group controlId="formName" className="mb-3">
